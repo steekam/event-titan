@@ -9,8 +9,6 @@ class EventManagement extends Component
 {
     public Event $event;
 
-    public bool $showFormModal = false;
-
     protected $rules = [
         'event.title' => ['required'],
         'event.description' => ['required'],
@@ -32,6 +30,11 @@ class EventManagement extends Component
             ->save();
 
         $this->event = new Event();
+    }
+
+    public function hey()
+    {
+        dd("hey");
     }
 
     public function render()

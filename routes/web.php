@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Livewire\EventManagement;
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\Events;
 
 Route::get('/', function () {
     return view('welcome');
@@ -10,7 +10,7 @@ Route::get('/', function () {
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::view('/dashboard', 'dashboard');
 
-    Route::get('/events', Events\Show::class)->name('events');
+    Route::get('/events', EventManagement::class)->name('events');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

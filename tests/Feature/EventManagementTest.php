@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Http\Livewire\EventManagement;
 use App\Http\Livewire\Events;
 use App\Models\Event;
 use App\Models\User;
@@ -32,7 +33,7 @@ class EventManagementTest extends TestCase
     {
         $this->actingAs(User::factory()->create());
 
-        Livewire::test(Events\Form::class)
+        Livewire::test(EventManagement::class)
             ->set('event.title', 'Programming 101')
             ->set('event.description', 'This is a test event description.')
             ->set('event.start_datetime', now())
@@ -47,7 +48,7 @@ class EventManagementTest extends TestCase
     {
         $this->actingAs(User::factory()->create());
 
-        Livewire::test(Events\Form::class)
+        Livewire::test(EventManagement::class)
             ->set('event.title', 'Programming 101')
             ->set('event.description', 'This is a test event description.')
             ->set('event.start_datetime', now()->subDays(2))
@@ -62,7 +63,7 @@ class EventManagementTest extends TestCase
     {
         $this->actingAs(User::factory()->create());
 
-        Livewire::test(Events\Form::class)
+        Livewire::test(EventManagement::class)
             ->set('event.title', 'Programming 101')
             ->set('event.description', 'This is a test event description.')
             ->set('event.start_datetime', now())

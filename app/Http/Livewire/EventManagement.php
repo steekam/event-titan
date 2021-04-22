@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Livewire\Events;
+namespace App\Http\Livewire;
 
 use App\Models\Event;
 use Livewire\Component;
 
-class Form extends Component
+class EventManagement extends Component
 {
     public Event $event;
+
+    public bool $showFormModal = false;
 
     protected $rules = [
         'event.title' => ['required'],
@@ -34,6 +36,6 @@ class Form extends Component
 
     public function render()
     {
-        return view('livewire.events.form');
+        return view('livewire.event-management');
     }
 }

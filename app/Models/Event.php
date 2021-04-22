@@ -20,8 +20,8 @@ class Event extends Model
     ];
 
     protected $casts = [
-        'start_datetime' => 'datetime',
-        'end_datetime' => 'datetime',
+        'start_datetime' => 'datetime:F j, Y H:i',
+        'end_datetime' => 'datetime:F j, Y H:i',
     ];
 
     public function owner(): BelongsTo

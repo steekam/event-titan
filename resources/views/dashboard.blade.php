@@ -15,9 +15,14 @@
         </div>
     </x-slot>
 
-    <div class="py-12">
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <h1 class="text-2xl font-semibold">This space will should have some basic stats or overview.</h1>
-        </div>
+    <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        @if(session()->has("success"))
+            <x-success-alert class="w-full mb-4 sm:max-w-3xl">
+                {{ session("success") }}
+            </x-success-alert>
+        @endif
+
+
+        <h1 class="text-2xl font-semibold">This space will should have some basic stats or overview.</h1>
     </div>
 </x-app-layout>

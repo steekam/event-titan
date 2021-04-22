@@ -3,7 +3,9 @@
 namespace App\Http\Livewire;
 
 use App\Models\Event;
+use Illuminate\Http\RedirectResponse;
 use Livewire\Component;
+use Livewire\Redirector;
 
 class EventManagement extends Component
 {
@@ -21,7 +23,7 @@ class EventManagement extends Component
         $this->event = new Event();
     }
 
-    public function create_event(): void
+    public function create_event()
     {
         $this->validate();
 
@@ -30,11 +32,10 @@ class EventManagement extends Component
             ->save();
 
         $this->event = new Event();
-    }
 
-    public function hey()
-    {
-        dd("hey");
+        session()->flash("success", "Event successfully created.");
+
+        return redirect()->route('dashboard');
     }
 
     public function render()

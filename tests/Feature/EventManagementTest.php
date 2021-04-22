@@ -39,7 +39,8 @@ class EventManagementTest extends TestCase
             ->set('event.start_datetime', now())
             ->set('event.end_datetime', now()->addHours(3))
             ->call('create_event')
-            ->assertNotSet('event.title', 'Programming 101');
+            ->assertNotSet('event.title', 'Programming 101')
+            ->assertRedirect('/dashboard');
 
         $this->assertTrue(Event::whereTitle('Programming 101')->exists());
     }

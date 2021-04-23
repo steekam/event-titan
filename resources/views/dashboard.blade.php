@@ -22,7 +22,6 @@
             </x-success-alert>
         @endif
 
-
-        <h1 class="text-2xl font-semibold">This space will should have some basic stats or overview.</h1>
+        @livewire('event-lists')
     </div>
 </x-app-layout>

@@ -22,22 +22,27 @@
                         <x-jet-label for="description" value="Description" class="text-base" />
                         <textarea id="description" name="description" rows="3" wire:model.defer="event.description"
                             class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-300 focus:border-indigo-300"></textarea>
-                        {{-- <p class="mt-2 text-sm text-gray-500">Write a few sentences about yourself.</p> --}}
                         <x-jet-input-error for="event.description" class="mt-2" />
                     </div>
 
                     <!-- Start Datetime -->
                     <div class="col-span-6 sm:col-span-3">
                         <x-jet-label for="start_datetime" value="Start Datetime" class="text-base" />
-                        <x-datetime-input id="start_datetime" class="block w-full mt-1"
+                        <x-datetime-input
+                            id="start_datetime"
+                            class="block w-full mt-1"
+                            minDate="{{ now()->format('Y-m-d') }}"
                             wire:model.defer="event.start_datetime" />
                         <x-jet-input-error for="event.start_datetime" class="mt-2" />
                     </div>
 
                     <!-- End Datetime -->
                     <div class="col-span-6 sm:col-span-3">
-                        <x-jet-label for="end_datetime" value="End Date" class="text-base" />
-                        <x-datetime-input id="end_datetime" class="block w-full mt-1"
+                        <x-jet-label for="end_datetime" value="End Datetime" class="text-base" />
+                        <x-datetime-input
+                            id="end_datetime"
+                            class="block w-full mt-1"
+                            minDate="{{ now()->format('Y-m-d') }}"
                             wire:model.defer="event.end_datetime" />
                         <x-jet-input-error for="event.end_datetime" class="mt-2" />
                     </div>

@@ -27,33 +27,6 @@ class EventManagementTest extends TestCase
             ->assertSee($event->description);
     }
 
-    public function test_event_owner_can_view_event_actions(): void
-    {
-        $this->actingAs(User::factory()->create());
-
-        $event = Event::factory()->create(['user_id' => auth()->id()]);
-
-        $event_actions_component = $this->blade('<x-event-actions :event="$event"/>', ['event' => $event]);
-
-        $this->get(route('events.show', $event->id))
-            ->assertOk()
-            ->assertSee($event_actions_component, false);
-    }
-
-
-    public function test_only_event_owner_can_view_edit_and_delete_actions(): void
-    {
-        $this->actingAs(User::factory()->create());
-
-        $event = Event::factory()->create(['user_id' => User::factory()->create()->id]);
-
-        $event_actions_component = $this->blade('<x-event-actions :event="$event"', ['event' => $event]);
-
-        $this->get(route('events.show', $event->id))
-            ->assertOk()
-            ->assertDontSee((string) $event_actions_component);
-    }
-
     public function test_authenticated_user_can_view_create_page(): void
     {
         $this->actingAs(User::factory()->create())

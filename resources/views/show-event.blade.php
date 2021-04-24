@@ -25,7 +25,7 @@
                         <time datetime="{{ $event->start_datetime }}">{{ $event->start_datetime_display }}</time> -
                         <time datetime="{{ $event->end_datetime }}">{{ $event->end_datetime_display }}</time>
                     </p>
-                    <p class="text-3xl font-medium text-gray-900">{{ $event->title }}</p>
+                    <p class="text-2xl font-medium text-gray-900">{{ $event->title }}</p>
                     <p class="mt-1 text-sm text-gray-500 uppercase">
                         Hosted by: {{ $event->owner->name }}
                     </p>

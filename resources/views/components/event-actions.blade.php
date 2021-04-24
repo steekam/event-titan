@@ -5,8 +5,5 @@
     <a href="{{ route('events.edit', $event->id) }}" class="font-medium text-blue-400 transition hover:text-blue-500 hover:underline">
         Edit
     </a>
-    {{-- TODO: DeleteEventComponent --}}
-    <a href="#" class="font-medium text-blue-400 transition hover:text-blue-500 hover:underline">
-        Delete
-    </a>
+    @livewire('delete-event', ['event' => $event])
 </div>

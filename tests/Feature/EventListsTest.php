@@ -28,9 +28,7 @@ class EventListsTest extends TestCase
 
         $user->events()->saveMany(Event::factory(5)->make());
 
-        $component = Livewire::test('event-lists');
-
-        $this->markTestIncomplete("Confirm the count of events");
-
+        Livewire::test('event-lists')
+            ->assertViewHas('events');
     }
 }

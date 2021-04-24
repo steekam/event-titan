@@ -17,8 +17,8 @@ namespace App\Models{
  * @property int $id
  * @property string $title
  * @property string $description
- * @property \Illuminate\Support\Carbon $start_datetime
- * @property \Illuminate\Support\Carbon $end_datetime
+ * @property \datetime $start_datetime
+ * @property \datetime $end_datetime
  * @property int $user_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at

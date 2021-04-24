@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\event;
+use App\Models\Event;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 
@@ -13,16 +13,11 @@ class EventFactory extends Factory
      *
      * @var string
      */
-    protected $model = event::class;
+    protected $model = Event::class;
 
-    /**
-     * Define the model's default state.
-     *
-     * @return array
-     */
-    public function definition()
+    public function definition(): array
     {
-        $start_datetime = $this->dateTimeBetween('-1 week', '+1 week');
+        $start_datetime = $this->faker->dateTimeBetween('-1 week', '+1 week');
         $end_datetime = Carbon::parse($start_datetime)->addHours(3);
 
         return [

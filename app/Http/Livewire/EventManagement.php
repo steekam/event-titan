@@ -3,9 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Event;
-use Illuminate\Http\RedirectResponse;
 use Livewire\Component;
-use Livewire\Redirector;
 
 class EventManagement extends Component
 {
@@ -18,9 +16,9 @@ class EventManagement extends Component
         'event.end_datetime' => ['required', 'date', 'after:event.start_datetime'],
     ];
 
-    public function mount(): void
+    public function mount(Event $event = null): void
     {
-        $this->event = new Event();
+        $this->event = $event ?? new Event();
     }
 
     public function create_event()
@@ -33,7 +31,8 @@ class EventManagement extends Component
 
         $this->event = new Event();
 
-        session()->flash("success", "Event successfully created.");
+        session()->flash('flash.bannerStyle', 'success');
+        session()->flash('flash.banner', 'Event successfully created.');
 
         return redirect()->route('dashboard');
     }

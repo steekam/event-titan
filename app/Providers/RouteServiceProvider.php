@@ -47,6 +47,9 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
         });
+
+        // Route model binding
+        Route::model('event', \App\Models\Event::class);
     }
 
     /**

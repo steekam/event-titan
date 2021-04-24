@@ -7,7 +7,7 @@
                 </h2>
             </div>
             <div class="flex mt-4 md:mt-0 md:ml-4">
-                <x-primary-button-link href="{{ route('events') }}">
+                <x-primary-button-link href="{{ route('events.create') }}">
                     New Event
                     <x-heroicon-o-plus class="w-5 h-5 ml-2 -mr-1" />
                 </x-primary-button-link>
@@ -16,12 +16,6 @@
     </x-slot>
 
     <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        @if(session()->has("success"))
-            <x-success-alert class="w-full mb-4 sm:max-w-3xl">
-                {{ session("success") }}
-            </x-success-alert>
-        @endif
-
         @livewire('event-lists')
     </div>
 </x-app-layout>

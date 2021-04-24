@@ -8,6 +8,10 @@ class EventLists extends Component
 {
     public function render()
     {
-        return view('livewire.event-lists');
+        $events = auth()->user()->events;
+
+        return view('livewire.event-lists', [
+            'events' => $events
+        ]);
     }
 }

@@ -23,8 +23,8 @@
                                 <a href="{{ route('events.show', $event->id) }}" class="block focus:outline-none group">
                                     <p class="text-sm font-medium text-gray-900 truncate group-hover:text-indigo-500">{{ $event->title }}</p>
                                     <p class="text-sm text-gray-500 uppercase">
-                                        <time datetime="{{ $event->start_datetime }}">{{ $event->start_datetime }}</time> -
-                                        <time datetime="{{ $event->end_datetime }}">{{ $event->end_datetime }}</time>
+                                        <time datetime="{{ $event->start_datetime }}">{{ $event->start_datetime_display }}</time> -
+                                        <time datetime="{{ $event->end_datetime }}">{{ $event->end_datetime_display }}</time>
                                     </p>
                                 </a>
                             </div>
@@ -32,7 +32,7 @@
                             <x-event-actions :event="$event" />
                         </div>
                         <div class="mt-1">
-                            <p class="text-sm text-gray-600 line-clamp-2">
+                            <p class="text-sm text-gray-600 line-clamp-3">
                                 {{ $event->description }}
                             </p>
                         </div>

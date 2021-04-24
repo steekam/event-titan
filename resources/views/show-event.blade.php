@@ -21,10 +21,13 @@
         <x-container class="max-w-3xl py-3 mx-auto bg-white rounded-md shadow">
             <div class="flex flex-col space-y-1 sm:space-y-0 sm:flex-row sm:justify-between sm:space-x-3">
                 <div class="flex-1 min-w-0">
-                    <p class="text-2xl font-medium text-gray-900">{{ $event->title }}</p>
                     <p class="text-sm text-gray-500 uppercase">
-                        <time datetime="{{ $event->start_datetime }}">{{ $event->start_datetime }}</time> -
-                        <time datetime="{{ $event->end_datetime }}">{{ $event->end_datetime }}</time>
+                        <time datetime="{{ $event->start_datetime }}">{{ $event->start_datetime_display }}</time> -
+                        <time datetime="{{ $event->end_datetime }}">{{ $event->end_datetime_display }}</time>
+                    </p>
+                    <p class="text-3xl font-medium text-gray-900">{{ $event->title }}</p>
+                    <p class="mt-1 text-sm text-gray-500 uppercase">
+                        Hosted by: {{ $event->owner->name }}
                     </p>
                 </div>
 

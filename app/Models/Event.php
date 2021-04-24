@@ -25,14 +25,14 @@ class Event extends Model
         'end_datetime' => 'datetime',
     ];
 
-    public function getStartDatetimeAttribute($start_datetime)
+    public function getStartDatetimeDisplayAttribute()
     {
-        return $start_datetime ?? Carbon::parse($start_datetime)->format('F j, Y H:i');
+        return $this->start_datetime ? Carbon::parse($this->start_datetime)->format('F j, Y H:i') : null;
     }
 
-    public function getEndDatetimeAttribute($end_datetime)
+    public function getEndDatetimeDisplayAttribute()
     {
-        return $end_datetime ?? Carbon::parse($end_datetime)->format('F j, Y H:i');
+        return $this->end_datetime ? Carbon::parse($this->end_datetime)->format('F j, Y H:i') : null;
     }
 
     public function owner(): BelongsTo

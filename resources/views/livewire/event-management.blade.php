@@ -1,6 +1,6 @@
 <div class="px-4 py-12">
     <div class="max-w-2xl mx-auto bg-white rounded-md shadow-sm">
-        <form wire:submit.prevent="create_event" class="flex flex-col gap-6">
+        <form wire:submit.prevent="save_details" class="flex flex-col gap-6">
             <div class="grid grid-cols-6 gap-6 px-6 py-4 sm:px-6 lg:px-8">
                 <!-- Title -->
                 <div class="col-span-6">
@@ -43,7 +43,7 @@
             <div
                 class="flex items-center justify-end px-4 py-3 text-right shadow bg-gray-50 sm:px-6 sm:rounded-bl-md sm:rounded-br-md">
                 <x-primary-button type="submit" wire:loading.attr="disabled">
-                    Create Event
+                    {{ $editingMode ? "Update Event" : "Create Event" }}
                 </x-primary-button>
             </div>
         </form>

@@ -76,7 +76,7 @@ class EventManagementTest extends TestCase
             ->set('event.description', 'This is a test event description.')
             ->set('event.start_datetime', now())
             ->set('event.end_datetime', now()->addHours(3))
-            ->call('create_event')
+            ->call('save_details')
             ->assertNotSet('event.title', 'Programming 101')
             ->assertRedirect('/dashboard')
             ->assertSessionHas('flash.banner', 'Event successfully created.')
@@ -94,7 +94,7 @@ class EventManagementTest extends TestCase
             ->set('event.description', 'This is a test event description.')
             ->set('event.start_datetime', now()->subDays(2))
             ->set('event.end_datetime', now()->addHours(3))
-            ->call('create_event')
+            ->call('save_details')
             ->assertHasErrors(['event.start_datetime' => 'after_or_equal']);
 
         $this->assertFalse(Event::whereTitle('Programming 101')->exists());
@@ -109,7 +109,7 @@ class EventManagementTest extends TestCase
             ->set('event.description', 'This is a test event description.')
             ->set('event.start_datetime', now())
             ->set('event.end_datetime', now()->subDays(3))
-            ->call('create_event')
+            ->call('save_details')
             ->assertHasErrors(['event.end_datetime' => 'after']);
 
         $this->assertFalse(Event::whereTitle('Programming 101')->exists());
@@ -133,6 +133,30 @@ class EventManagementTest extends TestCase
 
         $this->get(route('events.edit', $event->id))
             ->assertStatus(403);
+    }
+
+    public function test_owner_can_update_event(): void
+    {
+        $this->actingAs(User::factory()->create());
+
+        /** @var Event */
+        $event = Event::factory()->create(['user_id' => auth()->id()]);
+
+        Livewire::test(EventManagement::class, ['event' => $event])
+            ->assertSet('event.title', $event->title)
+            ->assertSet('event.description', $event->description)
+            ->set('event.title', 'Updated event title')
+            ->set('event.description', 'This is a new description')
+            ->set('event.start_datetime', now()->addDay())
+            ->set('event.end_datetime', now()->addDays(4))
+            ->call('save_details')
+            ->assertSessionHas('flash.bannerStyle', 'success')
+            ->assertSessionHas('flash.banner', 'Event successfully updated.');
+
+        $event->refresh();
+
+        $this->assertSame('Updated event title', $event->title);
+        $this->assertSame('This is a new description', $event->description);
     }
 
 }

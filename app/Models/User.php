@@ -64,4 +64,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(Event::class)->orderBy('start_datetime', 'desc');
     }
+
+    public function event_bookings(): HasMany
+    {
+        return $this->hasMany(EventBooking::class);
+    }
+
+    public function hasNotBookedEvent(Event $event): bool
+    {
+        return !EventBooking::whereUserId($this->id)
+            ->whereEventId($event->id)
+            ->exists();
+    }
 }

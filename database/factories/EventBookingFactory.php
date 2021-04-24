@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\event_booking;
+use App\Models\EventBooking;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class EventBookingFactory extends Factory
@@ -12,7 +12,7 @@ class EventBookingFactory extends Factory
      *
      * @var string
      */
-    protected $model = event_booking::class;
+    protected $model = EventBooking::class;
 
     /**
      * Define the model's default state.

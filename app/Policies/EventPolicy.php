@@ -17,6 +17,8 @@ class EventPolicy
 
     public function bookTicket(User $user, Event $event)
     {
-        return $event->user_id != $user->id && !$event->hasPassed();
+        return $event->user_id != $user->id &&
+            !$event->hasPassed() &&
+            $user->hasNotBookedEvent($event);
     }
 }

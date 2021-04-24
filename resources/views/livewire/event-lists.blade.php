@@ -43,7 +43,21 @@
         </x-tab-content>
 
         <x-tab-content id="booked-events">
-            <p>Booked events content</p>
+            @if($booked_events->isEmpty())
+            <x-container class="max-w-lg mx-auto text-center">
+                <p class="text-lg font-medium">
+                    You haven't booked any event yet.
+                </p>
+            </x-container>
+            @else
+            <div class="overflow-hidden bg-white shadow sm:rounded-md">
+                <ul class="divide-y divide-gray-200">
+                    @foreach ($booked_events as $event)
+                    <x-event-card :event="$event" />
+                    @endforeach
+                </ul>
+            </div>
+            @endif
         </x-tab-content>
     </div>
 </div>

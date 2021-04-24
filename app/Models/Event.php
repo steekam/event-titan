@@ -43,7 +43,7 @@ class Event extends Model
 
     public function hasPassed(): bool
     {
-        return Carbon::now()->gt($this->start_datetime);
+        return Carbon::today()->gt($this->start_datetime);
     }
 
     public function scopeUpcoming(Builder $query): Builder

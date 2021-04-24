@@ -6,12 +6,8 @@ use Illuminate\Database\Seeder;
 
 class EventBookingSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
+
+    public function run(): void
     {
         //
     }

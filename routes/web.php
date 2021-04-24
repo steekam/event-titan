@@ -17,5 +17,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/events/{event}/edit', [EventController::class, 'edit'])
         ->middleware('can:manageEvent,event')
         ->name('events.edit');
+    Route::get('/events/{event}/bookTicket', [EventController::class, 'bookTicket'])
+        ->middleware('can:bookTicket,event')
+        ->name('events.bookTicket');
+
 });
 

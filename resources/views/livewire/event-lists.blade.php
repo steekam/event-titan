@@ -28,7 +28,7 @@
             @if($upcoming_events->isEmpty())
             <x-container class="max-w-lg mx-auto text-center">
                 <p class="text-lg font-medium">
-                    There aren't any upcoming events.
+                    There aren't any upcoming events yet.
                 </p>
             </x-container>
             @else

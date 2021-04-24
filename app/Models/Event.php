@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Carbon;
 
 class Event extends Model
 {
@@ -20,9 +21,19 @@ class Event extends Model
     ];
 
     protected $casts = [
-        'start_datetime' => 'datetime:F j, Y H:i',
-        'end_datetime' => 'datetime:F j, Y H:i',
+        'start_datetime' => 'datetime',
+        'end_datetime' => 'datetime',
     ];
+
+    public function getStartDatetimeAttribute($start_datetime)
+    {
+        return $start_datetime ?? Carbon::parse($start_datetime)->format('F j, Y H:i');
+    }
+
+    public function getEndDatetimeAttribute($end_datetime)
+    {
+        return $end_datetime ?? Carbon::parse($end_datetime)->format('F j, Y H:i');
+    }
 
     public function owner(): BelongsTo
     {

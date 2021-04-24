@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Http\Livewire\EventLists;
 use App\Models\Event;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -15,7 +16,9 @@ class EventListsTest extends TestCase
     public function test_is_rendered_in_dashboard(): void
     {
         $this->actingAs(User::factory()->create());
-        $this->get('/dashboard')
+
+        $this->get(route('dashboard'))
+            ->assertOk()
             ->assertSeeLivewire('event-lists');
     }
 
@@ -26,6 +29,8 @@ class EventListsTest extends TestCase
         $user->events()->saveMany(Event::factory(5)->make());
 
         $component = Livewire::test('event-lists');
+
+        $this->markTestIncomplete("Confirm the count of events");
 
     }
 }

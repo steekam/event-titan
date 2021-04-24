@@ -23,8 +23,8 @@
                 <div class="flex-1 min-w-0">
                     <p class="text-2xl font-medium text-gray-900">{{ $event->title }}</p>
                     <p class="text-sm text-gray-500 uppercase">
-                        <time datetime="{{ $event->start_datetime }}">{{ $event->start_datetime->format("F j, Y H:i") }}</time> -
-                        <time datetime="{{ $event->end_datetime }}">{{ $event->end_datetime->format("F j, Y H:i") }}</time>
+                        <time datetime="{{ $event->start_datetime }}">{{ $event->start_datetime }}</time> -
+                        <time datetime="{{ $event->end_datetime }}">{{ $event->end_datetime }}</time>
                     </p>
                 </div>
 

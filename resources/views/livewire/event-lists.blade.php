@@ -8,7 +8,7 @@
             <x-container class="max-w-lg mx-auto text-center">
                 <p class="text-lg font-medium">
                     You don't have any events.
-                    <a href="{{ route('events') }}" class="text-indigo-500 hover:underline hover:text-indigo-600">Create
+                    <a href="{{ route('events.create') }}" class="text-indigo-500 hover:underline hover:text-indigo-600">Create
                         one now.</a>
                 </p>
             </x-container>
@@ -23,8 +23,8 @@
                                 <a href="{{ route('events.show', $event->id) }}" class="block focus:outline-none group">
                                     <p class="text-sm font-medium text-gray-900 truncate group-hover:text-indigo-500">{{ $event->title }}</p>
                                     <p class="text-sm text-gray-500 uppercase">
-                                        <time datetime="{{ $event->start_datetime }}">{{ $event->start_datetime->format("F j, Y H:i") }}</time> -
-                                        <time datetime="{{ $event->end_datetime }}">{{ $event->end_datetime->format("F j, Y H:i") }}</time>
+                                        <time datetime="{{ $event->start_datetime }}">{{ $event->start_datetime }}</time> -
+                                        <time datetime="{{ $event->end_datetime }}">{{ $event->end_datetime }}</time>
                                     </p>
                                 </a>
                             </div>

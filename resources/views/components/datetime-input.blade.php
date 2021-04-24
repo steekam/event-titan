@@ -1,4 +1,4 @@
-@props(['minDate'])
+@props(['minDate', 'defaultDate'])
 
 <input
     {{
@@ -6,14 +6,20 @@
     }}
 
     type="text"
-    x-data="{}"
-    x-init="
-        flatpickr($el, {
-            enableTime: true,
-            dateFormat: 'Y-m-d H:i',
-            altInput: true,
-            altFormat: 'F j, Y H:i',
-            minDate: '{{ $minDate ?? null }}'
-        })
-    "
+    x-data="{
+        initPicker() {
+            flatpickr($el, {
+                enableTime: true,
+                dateFormat: 'F j, Y H:i',
+                altInput: true,
+                altFormat: 'F j, Y H:i',
+                minDate: '{{ $minDate ?? null }}',
+                defaultDate: '{{ $defaultDate ?? null }}',
+            })
+
+            // Add wire:ignore to rendered input element
+            console.log($el.nextElementSibling)
+        }
+    }"
+    x-init="initPicker"
 />

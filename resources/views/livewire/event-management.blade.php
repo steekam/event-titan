@@ -18,7 +18,7 @@
                 </div>
 
                 <!-- Start Datetime -->
-                <div class="col-span-6 sm:col-span-3">
+                <div class="col-span-6 sm:col-span-3" wire:ignore>
                     <x-jet-label for="start_datetime" value="Start Datetime" class="text-base" />
                     <x-datetime-input
                         id="start_datetime"
@@ -29,7 +29,7 @@
                 </div>
 
                 <!-- End Datetime -->
-                <div class="col-span-6 sm:col-span-3">
+                <div class="col-span-6 sm:col-span-3" wire:ignore>
                     <x-jet-label for="end_datetime" value="End Datetime" class="text-base" />
                     <x-datetime-input
                         id="end_datetime"

@@ -1,4 +1,4 @@
-@props(['event'])
+@props(['event', 'showEventActions' => true])
 
 <li
     class="relative px-4 py-5 bg-white hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
@@ -14,9 +14,11 @@
             </a>
         </div>
 
-        @can('manageEvent', $event)
-        <x-event-actions :event="$event" />
-        @endcan
+        @if($showEventActions)
+            @can('manageEvent', $event)
+            <x-event-actions :event="$event" />
+            @endcan
+        @endif
     </div>
     <div class="mt-1">
         <p class="text-sm text-gray-600 line-clamp-3">

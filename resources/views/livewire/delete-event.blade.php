@@ -1,6 +1,6 @@
 <div>
     <a href="#"
-        wire:click="$toggle('confirmingEventDeletion')"
+        wire:click.prevent="$toggle('confirmingEventDeletion')"
         class="font-medium text-blue-400 transition hover:text-blue-500 hover:underline">
         Delete
     </a>

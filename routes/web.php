@@ -1,13 +1,10 @@
 <?php
 
 use App\Http\Controllers\EventController;
-use App\Http\Controllers\ShowEvent;
-use App\Http\Livewire\EventManagement;
+use App\Http\Controllers\WelcomPage;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', WelcomPage::class);
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::view('/dashboard', 'dashboard')->name('dashboard');
@@ -20,6 +17,4 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/events/{event}/bookTicket', [EventController::class, 'bookTicket'])
         ->middleware('can:bookTicket,event')
         ->name('events.bookTicket');
-
 });
-

@@ -2,16 +2,16 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Event;
 use Livewire\Component;
 
 class EventLists extends Component
 {
     public function render()
     {
-        $events = auth()->user()->events;
-
         return view('livewire.event-lists', [
-            'events' => $events
+            'events' => auth()->user()->events,
+            'upcoming_events' => Event::upcoming()->where('user_id', '!=' ,auth()->id())->get()
         ]);
     }
 }

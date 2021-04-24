@@ -20,5 +20,9 @@ class DatabaseSeeder extends Seeder
             // Events
             $user->events()->saveMany(Event::factory(5)->make());
         }
+
+        $this->call([
+            EventSeeder::class,
+        ]);
     }
 }

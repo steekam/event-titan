@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -38,5 +39,17 @@ class Event extends Model
     public function owner(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function hasPassed(): bool
+    {
+        return Carbon::now()->gt($this->start_datetime);
+    }
+
+    public function scopeUpcoming(Builder $query): Builder
+    {
+        return $query
+            ->whereDate('start_datetime', '>=', Carbon::today()->toDateString())
+            ->orderBy('start_datetime');
     }
 }

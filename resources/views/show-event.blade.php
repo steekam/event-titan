@@ -8,12 +8,14 @@
                     {{ $event->title }}
                 </h2>
             </div>
-            <div class="flex mt-4 md:mt-0 md:ml-4">
-                <x-primary-button-link href="{{ route('events.create') }}">
-                    Book Ticket
-                    <x-heroicon-o-ticket class="w-5 h-5 ml-2 -mr-1" />
-                </x-primary-button-link>
-            </div>
+            @can('bookEvent', $event)
+                <div class="flex mt-4 md:mt-0 md:ml-4">
+                    <x-primary-button-link href="{{ route('events.create') }}">
+                        Book Ticket
+                        <x-heroicon-o-ticket class="w-5 h-5 ml-2 -mr-1" />
+                    </x-primary-button-link>
+                </div>
+            @endcan
         </div>
     </x-slot>
 

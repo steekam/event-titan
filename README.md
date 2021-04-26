@@ -11,7 +11,14 @@ A simple event booking platform built using Laravel, Blade components and Livewi
 - User can make booking for another user's event.
 - User can list their booked events.
 
-  
+## Demo
+
+You can access the project using this [link](https://event-titan.herokuapp.com/). You can use the following test credentials:
+
+- **email**: `test@mail.com` **password**: `password`
+
+> **Note:** If you attempt to register a new account, you may not receive a verification email due to SMTP server constraints.
+
 ## Run Locally
 
 Clone the project

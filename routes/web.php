@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', WelcomPage::class);
 
-Route::group(['middleware' => ['auth', 'verified']], function () {
+Route::group(['middleware' => ['auth']], function () {
     Route::view('/dashboard', 'dashboard')->name('dashboard');
 
     Route::get('/events/create', [EventController::class, 'create'])->name('events.create');
